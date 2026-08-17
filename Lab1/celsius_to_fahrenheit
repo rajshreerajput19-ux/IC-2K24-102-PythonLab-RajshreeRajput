@@ -1,0 +1,11 @@
+# Aim: Take temperature in Celsius as input, convert it to Fahrenheit using the formula F = (C * 9/5) + 32.
+
+# Take Celsius input from the user
+celsius = float(input("Enter temperature in Celsius: "))
+
+# Compute Fahrenheit value using the given formula
+fahrenheit = (celsius * 9 / 5) + 32
+
+# Print the result
+print(f"Temperature in Celsius: {celsius}°C")
+print(f"Temperature in Fahrenheit: {fahrenheit}°F")

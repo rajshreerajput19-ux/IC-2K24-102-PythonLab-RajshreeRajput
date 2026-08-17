@@ -1,0 +1,80 @@
+# Lab 1 - Python Programming
+
+This folder contains all the programs for Lab 1, covering variables, basic inputs/outputs, arithmetic operations, conversions, string manipulations, escape sequences, and a menu-driven calculator.
+
+---
+
+## 1. Variable and Identifier Practice
+* **Aim:** Declare variables for name, age, height, and student status, and print each along with its type.
+* **Logic:** Variables are assigned with string, integer, float, and boolean values respectively. The `type()` function is used inside the print statements to display the data type of each variable.
+* **Sample Input / Output:**
+  * Output: 
+    Name: Rajshree (Class: <class 'str'>)
+    Age: 20 (Class: <class 'int'>)
+    Height: 5.5 (Class: <class 'float'>)
+    Is Student: True (Class: <class 'bool'>)
+
+---
+
+## 2. Greeting Program
+* **Aim:** Take a user's name, age, and city as input and print a single combined sentence using an f-string.
+* **Logic:** The `input()` function is used to take user inputs. An f-string (`f"..."`) is utilized to format and combine all variables into a readable sentence cleanly.
+* **Sample Input / Output:**
+  * Input: Name = "Rajshree", Age = 20, City = "Indore"
+  * Output: Hello Rajshree! You are 20 years old and live in Indore.
+
+---
+
+## 3. Arithmetic Operations
+* **Aim:** Take two numbers as input and print their sum, difference, product, quotient, and remainder.
+* **Logic:** Inputs are converted to float. Basic arithmetic operators (`+`, `-`, `*`, `/`, `%`) are applied. A conditional check is included to prevent division by zero errors.
+* **Sample Input / Output:**
+  * Input: Num1 = 8, Num2 = 2
+  * Output: 
+    Sum: 10.0
+    Difference: 6.0
+    Product: 16.0
+    Quotient: 4.0
+    Remainder: 0.0
+
+---
+
+## 4. Celsius to Fahrenheit
+* **Aim:** Take temperature in Celsius as input and compute the Fahrenheit value using the formula.
+* **Logic:** The input temperature is converted into a float value, and the conversion formula `(C * 9/5) + 32` is evaluated and stored in a variable to print.
+* **Sample Input / Output:**
+  * Input: Celsius = 25
+  * Output: Temperature in Fahrenheit: 77.0°F
+
+---
+
+## 5. String Manipulation
+* **Aim:** Take a full name as input and print it in uppercase, lowercase, reversed form, and its total length.
+* **Logic:** String methods `.upper()`, `.lower()`, and `len()` are used along with python slicing `[::-1]` to reverse the text string.
+* **Sample Input / Output:**
+  * Input: Full Name = "Rajshree Rajput"
+  * Output: 
+    Uppercase: RAJSHREE RAJPUT
+    Lowercase: rajshree rajput
+    Length: 15
+    Reversed: tupjaR eerhjsaR
+
+---
+
+## 6. Escape Sequence Practice
+* **Aim:** Write a short program that prints a receipt table using `\t` and `\n` to align text neatly.
+* **Logic:** Escape characters like tab (`\t`) and newline (`\n`) are embedded inside print strings to organize the text into a clean table structure.
+* **Sample Input / Output:**
+  * Output: 
+    Item Name	Quantity	Price
+    Apple		2		$4.00
+    Banana		5		$2.50
+
+---
+
+## 7. Menu-Driven Calculator 
+* **Aim:** Build a small menu-driven calculator with at least 4 operations running inside a loop until exit.
+* **Logic:** A `while True` loop keeps the program running. Options are presented via a menu, and `if-elif` conditions direct execution based on user choice until option 5 is selected to break the loop.
+* **Sample Input / Output:**
+  * Input: Choice = 1, Num1 = 10, Num2 = 5
+  * Output: Result: 15.0
