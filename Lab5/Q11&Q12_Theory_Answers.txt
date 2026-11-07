@@ -1,0 +1,313 @@
+PYTHON PROGRAMMING
+ADVANCED QUESTION PAPER
+THEORETICAL ANSWERS
+
+==================================================
+Q11. GENERATORS IN PYTHON [5 MARKS]
+
+QUESTION:
+Write a detailed note on Generators in Python. Explain what a generator is, the role of yield, memory efficiency, generator functions, generator comprehensions and their uses.
+
+ANSWER:
+
+(a) What is a Generator?
+
+A generator is a special type of function in Python that generates values one at a time instead of returning all values at once.
+
+A regular function uses return to return a complete result, while a generator uses yield to produce values one by one.
+
+Example:
+
+def numbers():
+return [1, 2, 3, 4, 5]
+
+def generate_numbers():
+for i in range(1, 6):
+yield i
+
+(b) Role of yield Keyword
+
+The yield keyword is used to return a value from a generator function.
+
+Unlike return, yield pauses the function and saves its current state. When the next value is requested, the function continues from where it stopped.
+
+Example:
+
+def count():
+yield 1
+yield 2
+yield 3
+
+for i in count():
+print(i)
+
+Output:
+1
+2
+3
+
+(c) Why Generators are Memory-Efficient
+
+Generators are memory-efficient because they generate values one at a time. They do not store all values in memory like a list.
+
+Example:
+
+def double_numbers(iterable):
+for i in iterable:
+yield i + i
+
+for i in double_numbers(range(1, 900000000)):
+print(i)
+
+if i >= 30:
+    break
+
+Output:
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+
+In this example, Python generates values only when required. It does not create a list containing 900 million numbers.
+
+Therefore, generators save memory and are useful for processing large amounts of data.
+
+(d) Generator Function and Generator Comprehension
+
+1. Generator Function:
+
+A generator function is a function that uses the yield keyword to generate values one by one.
+
+Example:
+
+def square_numbers():
+for i in range(1, 5):
+yield i * i
+
+for num in square_numbers():
+print(num)
+
+2. Generator Comprehension:
+
+A generator comprehension is a short way to create a generator using parentheses.
+
+Example:
+
+squares = (i * i for i in range(1, 5))
+
+for num in squares:
+print(num)
+
+Difference:
+
+A generator function uses def and yield keywords, while a generator comprehension uses a short expression inside parentheses.
+
+(e) Uses of Generators
+
+Generators are preferred in the following situations:
+
+1. When working with large amounts of data.
+2. When values are needed one at a time.
+3. When memory usage needs to be reduced.
+4. When processing files line by line.
+5. When working with infinite sequences.
+
+Conclusion:
+
+Generators make Python programs memory-efficient and useful for processing large amounts of data.
+
+==================================================
+Q12. OBJECT-ORIENTED PROGRAMMING IN PYTHON [5 MARKS]
+
+QUESTION:
+Explain Python’s Object-Oriented Programming model using Human and Superhero class examples. Explain instance attributes, class attributes, class methods, static methods, properties, super(), encapsulation and the main guard.
+
+ANSWER:
+
+(a) Instance Attributes and Class Attributes
+
+Instance Attributes:
+
+Instance attributes belong to a particular object. They are generally defined using self inside the constructor.
+
+Example:
+
+class Human:
+def init(self, name):
+self.name = name
+
+h1 = Human(“Raj”)
+h2 = Human(“Amit”)
+
+print(h1.name)
+print(h2.name)
+
+Class Attributes:
+
+Class attributes are shared by all objects of a class. They are defined directly inside the class.
+
+Example:
+
+class Human:
+species = “Human”
+
+print(Human.species)
+
+Difference:
+
+Instance attributes can have different values for different objects, whereas class attributes are shared by all objects.
+
+(b) @classmethod, @staticmethod and @property
+
+1. @classmethod:
+
+A class method works with the class itself. It takes cls as its first parameter.
+
+Example:
+
+class Human:
+species = “Human”
+
+@classmethod
+def get_species(cls):
+    return cls.species
+
+print(Human.get_species())
+
+2. @staticmethod:
+
+A static method does not require self or cls. It is used for functions related to a class.
+
+Example:
+
+class Human:
+
+@staticmethod
+def is_adult(age):
+    return age >= 18
+
+print(Human.is_adult(20))
+
+3. @property:
+
+The property decorator allows a method to be accessed like an attribute.
+
+Example:
+
+class Human:
+def init(self, age):
+self._age = age
+
+@property
+def age(self):
+    return self._age
+
+h = Human(20)
+print(h.age)
+
+(c) Use of super()
+
+The super() function is used to call methods from a parent class.
+
+It is commonly used in inheritance to reuse the parent class constructor or methods.
+
+Example:
+
+class Human:
+def init(self, name):
+self.name = name
+
+class Superhero(Human):
+def init(self, name, power):
+super().init(name)
+self.power = power
+
+s = Superhero(“Batman”, “Strength”)
+
+print(s.name)
+print(s.power)
+
+In single inheritance, super() calls the parent class method according to the method resolution order (MRO).
+
+In multiple inheritance, super() follows the MRO. It may not call every parent constructor if the classes are not designed cooperatively.
+
+(d) Encapsulation and _age Naming Pattern
+
+In Python, a variable starting with a single underscore, such as _age, indicates that it is intended for internal use.
+
+It is a naming convention and does not make the variable completely private.
+
+The @property decorator provides controlled access to the variable.
+
+The @age.setter decorator allows us to change its value.
+
+The @age.deleter decorator allows us to delete the property.
+
+Example:
+
+class Human:
+def init(self, age):
+self._age = age
+
+@property
+def age(self):
+    return self._age
+@age.setter
+def age(self, value):
+    if value >= 0:
+        self._age = value
+@age.deleter
+def age(self):
+    del self._age
+
+h = Human(20)
+
+print(h.age)
+
+h.age = 21
+print(h.age)
+
+del h.age
+
+This helps in implementing encapsulation and controlling access to data.
+
+(e) if name == ‘main’:
+
+In Python, every module has a special variable called name.
+
+When a Python file is run directly, its name value becomes “main”.
+
+When the file is imported into another program, its name becomes the module name.
+
+Example:
+
+def greet():
+print(“Hello Python”)
+
+if name == ‘main’:
+greet()
+
+This condition ensures that the code inside it runs only when the file is executed directly.
+
+Importance:
+
+1. It prevents unwanted execution when a module is imported.
+2. It makes code reusable.
+3. It separates program execution from function definitions.
+
+Conclusion:
+
+Python supports Object-Oriented Programming through classes, objects, inheritance, encapsulation and methods. These features help in writing reusable and organized programs.
+
+==================================================

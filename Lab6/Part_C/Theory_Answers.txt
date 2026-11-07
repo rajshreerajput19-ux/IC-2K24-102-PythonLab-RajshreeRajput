@@ -1,0 +1,130 @@
+LAB 6 – PART C: REASONING QUESTIONS
+
+Q1. Difference between d2 = d, d.copy() and copy.deepcopy()
+
+1. d2 = d does not create a new dictionary. Both variables refer to the same dictionary.
+2. d.copy() creates a shallow copy. It copies the outer dictionary, but nested objects are shared.
+3. copy.deepcopy() creates a completely independent copy, including nested objects.
+
+For a student database, copy.deepcopy() is better when we need a fully independent copy because student records contain nested dictionaries for marks. Changes in one copy will not affect the other.
+
+Q2. Which objects can be dictionary keys?
+
+1. [1, 2] – Not allowed because a list is mutable and unhashable.
+2. (1, 2) – Allowed because a tuple containing hashable elements is hashable.
+3. {1, 2} – Not allowed because a set is mutable and unhashable.
+4. “12” – Allowed because a string is immutable and hashable.
+
+Conclusion: Dictionary keys must be hashable.
+
+Q3. Difference between d[key], d.get(key) and d.get(key, default)
+
+1. d[key] returns the value of the key. If the key is missing, it raises a KeyError.
+2. d.get(key) returns the value if the key exists. Otherwise, it returns None.
+3. d.get(key, default) returns the value if the key exists. Otherwise, it returns the given default value.
+
+Example:
+
+student = {“name”: “Asha”}
+print(student[“name”])
+print(student.get(“age”))
+print(student.get(“age”, 0))
+
+Output:
+Asha
+None
+0
+
+Use: get() is useful when a key may not exist and we want to avoid a KeyError.
+
+Q4. Difference between update() and assignment in a loop
+
+1. Assignment is used to add or change one key-value pair at a time.
+2. update() adds multiple key-value pairs from another dictionary or iterable.
+3. update() is cleaner when we want to merge or add multiple records together.
+
+Example:
+
+student = {“name”: “Asha”}
+student.update({“age”: 20, “city”: “Indore”})
+print(student)
+
+Output:
+{‘name’: ‘Asha’, ‘age’: 20, ‘city’: ‘Indore’}
+
+Q5. Why is creating a new dictionary using comprehension safer than modifying salary in place?
+
+A new dictionary keeps the original employee salary records unchanged. It allows us to calculate increased salaries separately and compare old and new values.
+
+In-place modification changes the original data directly. This may cause problems if we need the original salary records later.
+
+When is in-place modification better?
+
+It is better when we intentionally want to update the original records and do not need to preserve the old values.
+
+Q6. Why does deleting dictionary keys while iterating cause an error? Give two safe methods.
+
+Deleting keys while directly iterating over a dictionary changes its size. Python raises a RuntimeError because the dictionary changes during iteration.
+
+Method 1: Iterate over a copy of keys.
+
+data = {“a”: 1, “b”: 2, “c”: 3}
+
+for key in list(data.keys()):
+if data[key] < 3:
+del data[key]
+
+print(data)
+
+Method 2: Create a new dictionary using comprehension.
+
+data = {“a”: 1, “b”: 2, “c”: 3}
+
+new_data = {
+key: value
+for key, value in data.items()
+if value >= 3
+}
+
+print(new_data)
+
+Both methods safely remove unwanted entries.
+
+Q7. How can we invert a book-to-members dictionary into a member-to-books dictionary? Why use a list?
+
+We can use a loop and setdefault() to create a new dictionary where each member ID stores a list of books issued to that member.
+
+Example:
+
+books = {
+“B1”: [“M1”, “M2”],
+“B2”: [“M1”],
+“B3”: [“M2”]
+}
+
+members = {}
+
+for book, member_list in books.items():
+for member in member_list:
+members.setdefault(member, []).append(book)
+
+print(members)
+
+Output:
+{‘M1’: [‘B1’, ‘B2’], ‘M2’: [‘B1’, ‘B3’]}
+
+Why use a list?
+
+A member can issue multiple books. A list can store multiple book IDs under the same member ID.
+
+Q8. Why is dictionary lookup O(1) on average, while list search is O(n)? How does this help in a phone directory?
+
+A dictionary uses hashing to locate a key directly. Therefore, its average lookup time is O(1).
+
+A list may need to check elements one by one until the required element is found. Therefore, its search time is O(n).
+
+In a phone directory:
+
+A reverse lookup dictionary can store phone numbers as keys and contact names as values. It helps find the contact name quickly using a phone number.
+
+Conclusion: Dictionaries are useful for fast searching and retrieving records.
