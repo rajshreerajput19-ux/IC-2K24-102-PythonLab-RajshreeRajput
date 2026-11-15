@@ -1,0 +1,76 @@
+LAB 6 - PART B: PREDICT THE OUTPUT
+
+Q1.
+Output:
+3
+
+Explanation:
+d2 = d means both variables refer to the same dictionary.
+Therefore, adding a key through d2 also changes d.
+
+
+Q2.
+Output:
+{'x': [1, 2]}
+
+Explanation:
+copy() creates a shallow copy. The inner list is shared by both dictionaries.
+Therefore, appending through d2 also changes the list inside d.
+
+
+Q3.
+Output:
+{'b': 1, 'c': 2}
+
+Explanation:
+The condition if v excludes the value 0.
+Therefore, only b and c are included.
+
+
+Q4.
+Output:
+1
+5
+{'a': 1, 'b': 5}
+
+Explanation:
+setdefault() does not change an existing key.
+It inserts the key only when it is missing.
+
+
+Q5.
+Output:
+{1: 'c'}
+1
+
+Explanation:
+1, 1.0 and True are equal and have the same hash value.
+Therefore, they are treated as the same dictionary key.
+
+
+Q6.
+Output:
+RuntimeError: dictionary changed size during iteration
+
+Explanation:
+Deleting dictionary keys while directly iterating over the dictionary changes its size.
+Python does not allow this operation.
+
+
+Q7.
+Output:
+None
+('b', 2)
+
+Explanation:
+pop("z", None) returns None because z does not exist.
+popitem() removes and returns the last inserted key-value pair.
+
+
+Q8.
+Output:
+{1: 'b'}
+
+Explanation:
+Both keys have the same value 1.
+In dictionary comprehension, the later key b overwrites the earlier key a.
